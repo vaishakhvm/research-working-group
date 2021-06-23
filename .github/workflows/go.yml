@@ -2,9 +2,9 @@ name: Go
 
 on:
   push:
-    branches: sharath-test
+    branches: main
   pull_request:
-    branches: sharath-test
+    branches: main
 
 jobs:
 
