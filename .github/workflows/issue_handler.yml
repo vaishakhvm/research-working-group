@@ -1,0 +1,13 @@
+name: Issue Handling
+on:
+  issues:
+    types: [opened, edited, milestoned]
+jobs:
+  issues:
+    # This job only runs for pull request comments
+    name: Issues
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Issue #${{ github.event.issue.types }}"
+# Needs editing. Still work in progress.
