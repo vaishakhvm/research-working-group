@@ -1,20 +1,13 @@
-name: MS Teams Notification
-
-on: [push, pull_request]
-
+name: Issue Handling
+on:
+  issues:
+    types: [opened, edited, milestoned]
 jobs:
-  build:
+  issues:
+    # This job only runs for pull request comments
+    name: Issues
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      # this is the new step using the ms-teams-notification action
-      - name: Notify dedicated teams channel
-        uses: jdcargile/ms-teams-notification@v1.3
-        with:
-          github-token: ${{ github.token }} # this will use the runner's token.
-          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          notification-summary: Your custom notification message 
-          notification-color: 17a2b8
-          timezone: America/Denver
+      - run: |
+          echo "Issue #${{ github.event.issue.types }}"
 # Needs editing. Still work in progress.
