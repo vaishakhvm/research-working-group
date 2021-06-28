@@ -1,7 +1,7 @@
 name: Issue Handling
 on:
   issues:
-    types: [opened, edited, milestoned]
+    types: [opened, edited, milestoned, closed]
 jobs:
   issues:
     # This job only runs for pull request comments
