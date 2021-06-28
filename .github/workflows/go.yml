@@ -53,5 +53,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Image tag and push
       run: |
-        docker build -t go/hello .
-        docker tag go/hello:latest kcdev1.krypc.com:5000/gohello:v1*
+        docker build -t go/hello -f Dockerfile .
+        docker tag go/hello:latest kcdev1.krypc.com:5000/gohello:v1
+        docker push  kcdev1.krypc.com:5000/gohello:v1
