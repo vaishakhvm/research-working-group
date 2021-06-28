@@ -51,7 +51,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-    - name: Image bulid
+    - name: Image tag and push
       run: |
         docker build -t go/hello .
-        docker tag go/hello:latest kcdev1.krypc.com:5000/gohello:'v*'
+        docker tag go/hello:latest kcdev1.krypc.com:5000/gohello:v1*
