@@ -21,6 +21,10 @@ jobs:
 #Removing old binary file   
     - name: Binary remove
       run: rm -r main
+      
+#Testing go file   
+    - name: Run tests
+      run: go test main.go
  
 #Creating a binary file
     - name: Build
