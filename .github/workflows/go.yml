@@ -50,11 +50,14 @@ jobs:
       run: echo  "$docker_password" | docker login kcdev1.krypc.com:5000 -u "$docker_username" --password-stdin
 
 #Tag and push images
+
   tag_and_push:
+  #- name: Build and push Docker images
     needs: image_build
     runs-on: self-hosted
     steps:
-    - uses: docker/build-push-action@v1
+      # - uses: docker/build-push-action@v1
+    - uses: docker/build-push-action@v2.5.0
     - name: Image tag and push
       run: |
         docker build -t go/hello -f Dockerfile .
