@@ -32,5 +32,6 @@ jobs:
       
   build_image:
       runs-on: self-hosted
-      steps:
-      - template: ../../templates/ci/docker_build_push.yml    
+      steps: 
+      - run: chmod +x ./templates/scrpits/docker_buils.sh 
+      - run: ./templates/scrpits/docker_buils.sh    
