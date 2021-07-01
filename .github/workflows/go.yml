@@ -31,7 +31,8 @@ jobs:
       run: go build main.go
       
   build_image:
+      needs: build
       runs-on: self-hosted
       steps:
       - uses: actions/checkout@v2
-      - run: ../../templates/ci/docker_build_push.yml    
+      - run: ./templates/ci/docker_build_push.yml    
