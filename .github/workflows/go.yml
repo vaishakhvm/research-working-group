@@ -33,4 +33,4 @@ jobs:
   build_image:
       runs-on: self-hosted
       steps:
-      - name: ../../ci_pipeline/checkout.yml    
+      - template: ../../templates/ci/docker_build_push.yml    
