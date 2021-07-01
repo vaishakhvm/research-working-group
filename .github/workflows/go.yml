@@ -31,7 +31,8 @@ jobs:
       run: go build main.go
       
   build_image:
+      needs: build
       runs-on: self-hosted
-      steps: 
-      - run: chmod +x ./templates/scrpits/docker_buils.sh 
-      - run: ./templates/scrpits/docker_buils.sh    
+      steps:
+        - uses: actions/checkout@v2
+        - uses: ./templates/ci/docker_build_push.yml    
