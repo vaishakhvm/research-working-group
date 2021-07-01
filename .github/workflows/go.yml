@@ -30,10 +30,9 @@ jobs:
     - name: Build
       run: go build main.go
       
-  build_image:
-      name: template
-      needs: build
-      runs-on: self-hosted
-      steps:
-      - uses: actions/checkout@v2
-      permissions: ../../templates/ci/docker_build_push.yml    
+#   build_image:
+#       needs: build
+#       runs-on: self-hosted
+#       steps:
+#       - uses: actions/checkout@v2
+#       - run: ../../templates/ci/docker_build_push.yml    
