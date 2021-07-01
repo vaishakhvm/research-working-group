@@ -33,4 +33,5 @@ jobs:
   build_image:
       runs-on: self-hosted
       steps:
-      - template: ../../templates/ci/docker_build_push.yml    
+      - uses: actions/checkout@v2
+      - run: ../../templates/ci/docker_build_push.yml    
