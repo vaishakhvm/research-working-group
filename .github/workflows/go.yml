@@ -34,5 +34,5 @@ jobs:
       needs: build
       runs-on: ubuntu-latest
       steps:
-#         - uses: actions/checkout@v2
-        - template: ../../.github/actions/actions.yml   
+        - uses: actions/checkout@v2
+        - uses: ./.github/actions
