@@ -1,3 +1,2 @@
 #! /bin/sh
-echo Build Docker Image && docker build -t go/hello . && echo Docker Image Created &&
-exit bash
+echo Build Docker Image && docker build -t go/hello . && echo Docker Image Created 
