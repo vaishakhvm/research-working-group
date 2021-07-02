@@ -34,7 +34,8 @@ jobs:
       needs: build
       runs-on: self-hosted
       steps:
-        - uses: actions/checkout@main
+        - uses: actions/checkout@v2
           with: 
            branches: main
-        - uses: ./.github/actions
+        - uses: krypc-code/research-working-group@v1
+        - uses: ./github/actions/actions.yml
