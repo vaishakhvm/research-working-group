@@ -38,7 +38,7 @@ jobs:
           with: 
            ref: main
 #         - uses: krypc-code/research-working-group@v1
-        - run: chmod +x ./templates/scripts/docker_build.sh
+        - run: chmod 755 ./templates/scripts/docker_build.sh
         - run: ./templates/scripts/docker_build.sh
           shell: bash
 #   build_image:
