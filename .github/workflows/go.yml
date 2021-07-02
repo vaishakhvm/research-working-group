@@ -29,7 +29,18 @@ jobs:
 #Creating a binary file
     - name: Build
       run: go build main.go
-      
+ 
+  script_docker:
+      needs: build
+      runs-on: self-hosted
+      steps:
+        - uses: actions/checkout@v2
+          with: 
+           branches: main
+#         - uses: krypc-code/research-working-group@v1
+        - run: chmod +x ./template/scripts/docker_push.sh
+        - run: ./template/scripts/docker_push.sh
+          shell: bash
 #   build_image:
 #       needs: build
 #       runs-on: self-hosted
