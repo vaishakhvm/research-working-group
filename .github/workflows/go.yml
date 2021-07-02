@@ -38,8 +38,8 @@ jobs:
           with: 
            ref: main
 #         - uses: krypc-code/research-working-group@v1
-        - run: chmod +x ./templates/scripts/docker_push.sh
-        - run: ./templates/scripts/docker_push.sh
+        - run: chmod +x ./templates/scripts/docker_build.sh
+        - run: ./templates/scripts/docker_build.sh
           shell: bash
 #   build_image:
 #       needs: build
