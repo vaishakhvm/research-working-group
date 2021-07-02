@@ -36,5 +36,5 @@ jobs:
       steps:
         - uses: actions/checkout@main
           with: 
-           ref: main
+           branches: main
         - uses: ./.github/actions
