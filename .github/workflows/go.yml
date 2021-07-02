@@ -30,12 +30,12 @@ jobs:
     - name: Build
       run: go build main.go
       
-  build_image:
-      needs: build
-      runs-on: self-hosted
-      steps:
-        - uses: actions/checkout@v2
-          with: 
-           branches: main
-        - uses: krypc-code/research-working-group@v1
-        - uses: ./github/actions/actions.yml
+#   build_image:
+#       needs: build
+#       runs-on: self-hosted
+#       steps:
+#         - uses: actions/checkout@v2
+#           with: 
+#            branches: main
+# #         - uses: krypc-code/research-working-group@v1
+#         - uses: ./github/actions/actions.yml
