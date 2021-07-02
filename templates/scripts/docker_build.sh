@@ -1,2 +1,2 @@
 #! /bin/sh
-echo Hello World!!!!
+echo Build Docker Image && docker build -t go/hello . && echo Docker Image Created && ls | grep docker images;
