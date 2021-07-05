@@ -31,7 +31,7 @@ jobs:
       run: go build main.go
 #Cache dependancies
     - name: Cache Files
-    - uses: actions/cache@v2
+      uses: actions/cache@v2
       with:
         path: |
           ~/.cache/go-build
