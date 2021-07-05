@@ -29,7 +29,16 @@ jobs:
 #Creating a binary file
     - name: Build
       run: go build main.go
- 
+#Cache dependancies
+    - name: Cache Files
+    - uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
   script_docker:
       needs: build
       runs-on: self-hosted
