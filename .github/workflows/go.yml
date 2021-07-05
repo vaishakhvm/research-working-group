@@ -39,23 +39,24 @@ jobs:
         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
         restore-keys: |
           ${{ runner.os }}-go-
-  script_docker:
-      needs: build
-      runs-on: self-hosted
-      steps:
-        - uses: actions/checkout@v2
-          with: 
-           ref: main
-#         - uses: krypc-code/research-working-group@v1
-        - run: chmod +x ./templates/scripts/docker_build.sh
-        - run: sh ./templates/scripts/docker_build.sh
-          shell: bash
-#   build_image:
+          
+##**Script added for docker image build**
+#   script_docker:
 #       needs: build
 #       runs-on: self-hosted
 #       steps:
 #         - uses: actions/checkout@v2
 #           with: 
-#            branches: main
-# #         - uses: krypc-code/research-working-group@v1
-#         - uses: ./github/actions/actions.yml
+#            ref: main
+#         - run: chmod +x ./templates/scripts/docker_build.sh
+#         - run: sh ./templates/scripts/docker_build.sh
+#           shell: bash
+  build_image:
+      needs: build
+      runs-on: self-hosted
+      steps:
+        - uses: actions/checkout@v2
+          with: 
+           branches: main
+#         - uses: krypc-code/research-working-group@v1
+        - run: pwd
