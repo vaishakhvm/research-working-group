@@ -59,4 +59,5 @@ jobs:
           with: 
            branches: main
 #         - uses: krypc-code/research-working-group@v1
-        - run: pwd
+#         - run: pwd
+        - run: /home/git_sys/actions-runner/_work/research-working-group/research-working-group/ci.yml
