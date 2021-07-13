@@ -20,8 +20,9 @@ jobs:
         
 #Removing old binary file   
     - name: Binary remove
-      run: rm -r main
-      
+      run: |
+       rm -r main
+       echo "remove binary"
 #Testing go file   
     - name: Run tests
       run: go test main.go
