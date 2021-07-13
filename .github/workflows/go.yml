@@ -24,8 +24,8 @@ jobs:
        rm -r main
        echo "remove binary"
 #Testing go file   
-    - name: Run tests
-      run: go test main.go
+#     - name: Run tests
+#       run: go test main.go
  
 #Creating a binary file
     - name: Build
