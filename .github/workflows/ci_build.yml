@@ -20,7 +20,7 @@ jobs:
         
 #Running unit tests
   Run_unit_tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Running unit tests
       run: go test ./hello -v
