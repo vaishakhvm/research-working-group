@@ -8,6 +8,13 @@ on:
 
 jobs: 
 
+#Running unit tests
+  Run_unit_tests:
+    runs-on: self-hosted
+    steps:
+    - name: Running unit tests
+      run: go test ./hello -v
+
 #Docker image build using binary created      
   image_build:
     runs-on: self-hosted
