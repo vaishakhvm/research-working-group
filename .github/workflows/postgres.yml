@@ -1,5 +1,4 @@
-name: Run unit tests
-
+name: Postgress Service 
 on:
   push:
     branches: [ main ]
