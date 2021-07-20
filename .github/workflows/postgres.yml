@@ -15,9 +15,9 @@ jobs:
       postgres:
         image: postgres:9
         env:
-          POSTGRES_USER: root
-          POSTGRES_PASSWORD: secret
-          POSTGRES_DB: simple_bank
+          POSTGRES_USER:  ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+#           POSTGRES_DB: simple_bank
         ports:
           - 5432:5432
         options: >-
