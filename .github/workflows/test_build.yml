@@ -1,5 +1,5 @@
 
-name: Go - main
+name: Go-CI
 
 on:
   push:
@@ -31,6 +31,4 @@ jobs:
     - name: Build
       run: go build main.go
       
-#Docker image build using binary created      
-    - name: Docker Image
-      run: docker build -t go/hello .
+
