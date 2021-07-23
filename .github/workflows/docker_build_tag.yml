@@ -31,7 +31,7 @@ jobs:
         
     - name: Version details
       run: |
-        echo "Latest version is:" ${{ github.run_number }
+        echo "Latest version is:" ${{ github.run_number }}
         
   on-failure:
     runs-on: self-hosted
