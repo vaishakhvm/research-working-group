@@ -25,14 +25,15 @@ jobs:
     steps:
     - uses: docker/build-push-action@v1
     - name: Image tag and push
+    - env:
+       docker_tag: v${{ github.run_number }}
       run: |
-        docker build -t go/hello -f Dockerfile . -t kcdev1.krypc.com:5000/gohello:${{ github.run_number }}
+        docker build -t go/hello -f Dockerfile . -t kcdev1.krypc.com:5000/gohello:$docker_tag
         docker images | grep kcdev1.krypc.com:5000/gohello
         
     - name: Version details
       run: |
-        echo "Latest version is:" ${{ github.run_number }}
-        
+        echo "Latest version is:" $docker_tag
   on-failure:
     runs-on: self-hosted
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
