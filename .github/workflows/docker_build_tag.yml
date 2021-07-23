@@ -26,8 +26,12 @@ jobs:
     - uses: docker/build-push-action@v1
     - name: Image tag and push
       run: |
-        docker build -t go/hello -f Dockerfile . -t kcdev1.krypc.com:5000/gohello:latest
-        docker images
+        docker build -t go/hello -f Dockerfile . -t kcdev1.krypc.com:5000/gohello:${{ github.run_number }}
+        docker images | grep kcdev1.krypc.com:5000/gohello
+        
+    - name: Version details
+      run: |
+        echo "Latest version is:" ${{ github.run_number }
         
   on-failure:
     runs-on: self-hosted
