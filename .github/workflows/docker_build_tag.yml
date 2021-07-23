@@ -4,7 +4,9 @@ on:
   workflow_run:
     workflows: ["Go-CI"]
     types:
-      - completed  
+      - completed 
+env:
+      docker_tag: v${{ github.run_number }}
   
 jobs: 
   on-success:
@@ -21,10 +23,8 @@ jobs:
 
 #Tag and push images
   tag_and_push:
-#     needs: image_build
+    needs: on-success
     runs-on: self-hosted
-    env:
-      docker_tag: v${{ github.run_number }}
     steps:
     - uses: docker/build-push-action@v1
     - name: Image tag and push
