@@ -5,6 +5,7 @@ on:
     workflows: ["Go-CI"]
     types:
       - completed  
+  
 jobs: 
   on-success:
     runs-on: self-hosted
@@ -22,11 +23,12 @@ jobs:
   tag_and_push:
 #     needs: image_build
     runs-on: self-hosted
+    env:
+      docker_tag: v${{ github.run_number }}
     steps:
     - uses: docker/build-push-action@v1
     - name: Image tag and push
-    - env:
-       docker_tag: v${{ github.run_number }}
+    
       run: |
         docker build -t go/hello -f Dockerfile . -t kcdev1.krypc.com:5000/gohello:$docker_tag
         docker images | grep kcdev1.krypc.com:5000/gohello
