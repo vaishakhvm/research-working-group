@@ -1,0 +1,40 @@
+name: docker_build_push
+
+on:
+  workflow_run:
+    workflows: ["Go-CI"]
+    types:
+      - completed  
+jobs: 
+  on-success:
+    runs-on: self-hosted
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+  docker_login:
+    - name: Login to Docker Registry
+      env: 
+        docker_password: ${{ secrets.DOCKER_PASSWORD }}
+        docker_username: ${{ secrets.DOCKER_USERNAME }} 
+      run: echo  "$docker_password" | docker login kcdev1.krypc.com:5000 -u "$docker_username" --password-stdin
+
+#Tag and push images
+  tag_and_push:
+    needs: image_build
+    runs-on: self-hosted
+    steps:
+    - uses: docker/build-push-action@v1
+    - name: Image tag and push
+      env: 
+        
+      run: |
+        docker build -t go/hello -f Dockerfile . -t kcdev1.krypc.com:5000/gohello:latest
+        docker images
+        
+  on-failure:
+    runs-on: self-hosted
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+    - name: failure message
+      run: echo "Tests have failed."        
