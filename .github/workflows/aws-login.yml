@@ -8,8 +8,8 @@ jobs:
   VM_LOGIN:
     runs-on: self-hosted
     steps:
-#     - name: checkout
-#       uses: actions/checkout@v2  
+    - name: checkout
+      uses: actions/checkout@v2  
     - name: Login to AWS VM
       uses: easingthemes/ssh-deploy@main
       env: 
