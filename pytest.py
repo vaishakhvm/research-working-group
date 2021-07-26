@@ -1,4 +1,4 @@
-import sys
+import sys,os
 from dotenv import load_dotenv
 
 version_tag = str(sys.argv[1])
