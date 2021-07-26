@@ -8,19 +8,20 @@ on:
     
 jobs:
   Setup python:
-    - name: checkout repo content
-      uses: actions/checkout@v2 # checkout the repository content to github runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
 
-    - name: setup python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.7.7'
-        
-   Run a Script:
-    - name: Run script.
-      env:
-        Name: "Krypc"
-      run: python pytest.py $Name
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7.7'
+          
+      - name: Run script.
+        env:
+          Name: "Krypc"
+        run: python pytest.py $Name
       
       
     
