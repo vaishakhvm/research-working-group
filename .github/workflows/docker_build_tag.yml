@@ -32,6 +32,7 @@ jobs:
       run: |
         docker build -t go/hello -f Dockerfile . -t kcdev1.krypc.com:5000/gohello:$docker_tag
         docker images | grep kcdev1.krypc.com:5000/gohello
+        docker-compose up -d
         
     - name: Version details
       run: |
