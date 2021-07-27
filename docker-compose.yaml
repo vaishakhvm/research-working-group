@@ -1,5 +1,5 @@
 version: '2'
 services:
   Helloworld:
-    image: go/testsample:${TAG_VERSION}
+    image: kcdev1.krypc.com:5000/gohello:${TAG_VERSION}
     command: ["./main"]
