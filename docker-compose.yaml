@@ -1,0 +1,5 @@
+version: '2'
+services:
+  Helloworld:
+    image: go/testsample:${TAG_VERSION}
+    command: ["./main"]
