@@ -15,13 +15,6 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v2
-    - name: setup python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.7.7'
-
-    - name: install python packages
-      run: pip install python-dotenv
       
     - name: Login to Docker Registry
       env: 
@@ -34,6 +27,14 @@ jobs:
     needs: on-success
     runs-on: self-hosted
     steps:
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7.7'
+
+    - name: install python packages
+      run: pip install python-dotenv
+      
     - uses: docker/build-push-action@v1
     - name: Image tag and push
       run: |
