@@ -49,7 +49,9 @@ jobs:
     
     - name: Docker up
       if: ${{ success() }}
-      run: docker-compose up -d
+      run: |
+        pwd
+        docker-compose up -d
   on-failure:
     runs-on: self-hosted
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
