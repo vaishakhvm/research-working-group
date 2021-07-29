@@ -52,6 +52,7 @@ jobs:
       run: |
         pwd
         docker-compose up -d
+        docker-compose ps
   on-failure:
     runs-on: self-hosted
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
