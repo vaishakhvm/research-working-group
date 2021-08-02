@@ -5,7 +5,7 @@ on:
   push:
     branches: main
 env:
-  SHA7: ${GITHUB_SHA::7}    
+  SHA7: ${GITHUB_SHA:7}    
 
 jobs:
 
