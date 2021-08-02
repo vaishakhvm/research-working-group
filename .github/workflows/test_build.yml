@@ -31,14 +31,14 @@ jobs:
       run: rm -r main 
 
 #Creating a binary file
-    - name: Go_Build
+    - name: Build
       run: |
        go build main.go
        echo ${{ github.sha }}
-       
-    - name: Docker_Build  
-      run: |
        docker build -t helloworld . 
+  
+    - name: Docker_Tag  
+      run: |       
        docker tag helloworld kcdev1.krypc.com:5000/hellosha:${{ github.sha }}
        docker tag helloworld kcdev1.krypc.com:5000/hellosha:latest
        
