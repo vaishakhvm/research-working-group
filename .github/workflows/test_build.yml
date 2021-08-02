@@ -5,8 +5,7 @@ on:
   push:
     branches: main
 env:
-  SHA7: ${GITHUB_SHA:7}    
-
+  SHORTSHA: $(git rev-parse --short=4 ${{ github.sha }})
 jobs:
 
   build:
@@ -29,8 +28,8 @@ jobs:
     - name: Build
       run: |
         go build main.go
-        echo $SHA7
-        docker build -t taggedimage/helloworld:$SHA7 -f Dockerfile .
+        echo $SHORTSHA
+        docker build -t helloworld . -t taggedimage/helloworld:$SHORTSHA
         docker images | grep taggedimage/helloworld
       
 
