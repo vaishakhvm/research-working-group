@@ -36,9 +36,9 @@ jobs:
        go build main.go
        echo $SHORTSHA
        docker build -t helloworld . 
-       docker tag helloworld:${{ github.sha }}
-       docker tag kcdev1.krypc.com/hellonew:latest
-       docker push kcdev1.krypc.com/hellonew:${{ github.sha }}
+       docker tag helloworld  kcdev1.krypc.com/hellosha:${{ github.sha }}
+       docker tag helloworld:latest kcdev1.krypc.com/hellonew:latest
+       docker push kcdev1.krypc.com/hellosha:${{ github.sha }}
        docker push kcdev1.krypc.com/hellonew:latest
        docker images | grep kcdev1.krypc.com/hellonew
       
