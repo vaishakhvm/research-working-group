@@ -4,8 +4,6 @@ name: Go-CI
 on:
   push:
     branches: main
-env:
-  SHORTSHA: $(git rev-parse --short=4 ${{ github.sha }})
 jobs:
 
   build:
@@ -18,35 +16,30 @@ jobs:
       with:
         go-version: 1.16
         
+    - name: Login to Docker Registry
+      env: 
+        docker_password: ${{ secrets.DOCKER_PASSWORD }}
+        docker_username: ${{ secrets.DOCKER_USERNAME }} 
+      run: echo  "$docker_password" | docker login kcdev1.krypc.com:5000 -u "$docker_username" --password-stdin        
+
 #Running unit tests
     - name: Running unit tests
       run: go test ./hello -v
+
 #Removing old binary file   
     - name: Binary remove
       run: rm -r main 
+
 #Creating a binary file
-  shortsha:
-    runs-on: self-hosted
-    steps:
-      - name: get sha
-        run: |
-          echo $SHORTSHA   
-      - name: checkout
-        uses: actions/checkout@v1
-      - name: get shortsha
-        id: vars
-        run: |
-          echo ::set-output name=sha_short::$(git rev-parse --short=4 ${{ github.sha }})
-      - name: use env
-        run: |
-          echo $SHORTSHATEST
-        env:
-          SHORTSHATEST: ${{ steps.vars.outputs.sha_short }} 
-      - name: Build
-        run: |
-          go build main.go
-          echo $SHORTSHA
-          docker build -t helloworld . -t taggedimage/helloworld:$SHORTSHATEST
-          docker images | grep taggedimage/helloworld
+    - name: Build
+      run: |
+       go build main.go
+       echo $SHORTSHA
+       docker build -t helloworld . 
+       docker tag helloworld:${{ github.sha }}
+       docker tag kcdev1.krypc.com/hellonew:latest
+       docker push kcdev1.krypc.com/hellonew:${{ github.sha }}
+       docker push kcdev1.krypc.com/hellonew:latest
+       docker images | grep kcdev1.krypc.com/hellonew
       
 
