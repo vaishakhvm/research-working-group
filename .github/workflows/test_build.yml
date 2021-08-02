@@ -29,6 +29,6 @@ jobs:
         go build main.go
         echo ${{ github.sha }}
         docker build -t helloworld -f Dockerfile . -t taggedimage/helloworld:${{ github.sha }}
-        echo docker images | grep taggedimage/helloworld
+        docker images | grep taggedimage/helloworld
       
 
