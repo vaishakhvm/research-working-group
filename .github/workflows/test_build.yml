@@ -25,6 +25,8 @@ jobs:
       run: rm -r main 
 #Creating a binary file
     - name: Build
-      run: go build main.go
+      run: |
+        go build main.go
+        echo ${{ github.sha }}
       
 
