@@ -4,6 +4,8 @@ name: Go-CI
 on:
   push:
     branches: main
+env:
+  SHA7: ${GITHUB_SHA::7}    
 
 jobs:
 
@@ -28,7 +30,7 @@ jobs:
       run: |
         go build main.go
         echo ${{ github.sha }}
-        docker build -t taggedimage/helloworld:${{ github.sha::7 }} .
+        docker build -t taggedimage/helloworld:$SHA7 .
         docker images | grep taggedimage/helloworld
       
 
