@@ -25,11 +25,28 @@ jobs:
     - name: Binary remove
       run: rm -r main 
 #Creating a binary file
-    - name: Build
-      run: |
-        go build main.go
-        echo $SHORTSHA
-        docker build -t helloworld . -t taggedimage/helloworld:$SHORTSHA
-        docker images | grep taggedimage/helloworld
+  shortsha:
+    runs-on: self-hosted
+    steps:
+      - name: get sha
+        run: |
+          echo $SHORTSHA   
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: get shortsha
+        id: vars
+        run: |
+          echo ::set-output name=sha_short::$(git rev-parse --short=4 ${{ github.sha }})
+      - name: use env
+        run: |
+          echo $SHORTSHATEST
+        env:
+          SHORTSHATEST: ${{ steps.vars.outputs.sha_short }} 
+      - name: Build
+        run: |
+          go build main.go
+          echo $SHORTSHA
+          docker build -t helloworld . -t taggedimage/helloworld:$SHORTSHATEST
+          docker images | grep taggedimage/helloworld
       
 
