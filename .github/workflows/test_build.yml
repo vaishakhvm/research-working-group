@@ -29,8 +29,8 @@ jobs:
     - name: Build
       run: |
         go build main.go
-        echo ${{ github.sha }}
-        docker build -t taggedimage/helloworld:$SHA7 .
+        echo $SHA7
+        docker build -t taggedimage/helloworld:$SHA7 -f Dockerfile .
         docker images | grep taggedimage/helloworld
       
 
