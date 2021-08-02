@@ -36,7 +36,8 @@ jobs:
        go build main.go
        echo ${{ github.sha }}
        
-    - name: Docker_Build       
+    - name: Docker_Build  
+      run: |
        docker build -t helloworld . 
        docker tag helloworld kcdev1.krypc.com:5000/hellosha:${{ github.sha }}
        docker tag helloworld kcdev1.krypc.com:5000/hellosha:latest
