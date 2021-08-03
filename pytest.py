@@ -1,6 +1,6 @@
 import sys,os
 from dotenv import load_dotenv
-
+# Just another comment!
 version_tag = str(sys.argv[1])
 
 with open(".env", "w") as f:
